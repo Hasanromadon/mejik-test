@@ -119,7 +119,7 @@ const Login = ({ isLoginOpen, setIsLoginOpen }) => {
                       <div className="mb-3">
                         <label className="font-medium">Password</label>
                         <input
-                          type="text"
+                          type="password"
                           className={`border
                           block rounded w-full ${
                             formik.errors.password

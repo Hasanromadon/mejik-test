@@ -139,7 +139,7 @@ const Register = ({ isRegisterOpen, setIsRegisterOpen }) => {
                       <div className="mb-3">
                         <label className="font-medium">Password</label>
                         <input
-                          type="text"
+                          type="password"
                           className="border border-gray-300 block rounded w-full"
                           {...formik.getFieldProps('password')}
                         />
