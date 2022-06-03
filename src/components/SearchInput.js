@@ -1,6 +1,17 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const SearchInput = ({ placeholder }) => {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search?key=${query}`);
+  };
+
   return (
-    <form method="GET">
+    <form onSubmit={(e) => handleSearch(e)}>
       <div className="relative w-[44rem] text-gray-600 focus-within:text-gray-400">
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           <button
@@ -36,6 +47,8 @@ const SearchInput = ({ placeholder }) => {
         <input
           type="search"
           name="q"
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          value={query}
           className="w-full transition-all ease-linear duration-100  border-slate-200 text-white bg-shade rounded-md pl-12 focus:outline-none focus:bg-white focus:text-gray-900"
           placeholder={placeholder}
           autoComplete="off"
