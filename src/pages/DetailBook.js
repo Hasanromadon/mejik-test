@@ -14,7 +14,7 @@ const DetailBook = () => {
       <div className="container">
         <div className="w-full  flex justify-center">
           {loading ? (
-            <div>
+            <div className="text-center mt-10">
               <img src={loadingIcon} alt="" />
             </div>
           ) : (
