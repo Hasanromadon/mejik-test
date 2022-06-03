@@ -4,6 +4,7 @@ const SEARCH_BOOK = gql`
   query searchBook($name: String!) {
     books(where: { name_contains: $name }) {
       name
+      id
       author {
         name
       }
@@ -24,6 +25,7 @@ const SEARCH_BOOK_BY_CATEGORY = gql`
   query searchBook($name: String!) {
     books(where: { category: { name_contains: $name } }) {
       name
+      id
       status
       author {
         name

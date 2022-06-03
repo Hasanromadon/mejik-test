@@ -22,7 +22,7 @@ const BookCard = ({ book }) => {
         alt=""
       />
       <div className="bg-white p-3 h-full">
-        <Link to={`book/${book.id}`} className="card-link">
+        <Link to={`/book/${book.id}`} className="card-link">
           {book.name}
         </Link>
         <div className="flex absolute text-sm bottom-4">
