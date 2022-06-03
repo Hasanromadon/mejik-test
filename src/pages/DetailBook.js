@@ -61,7 +61,7 @@ const DetailBook = () => {
                     </div>
                     <div className="mt-6">
                       {data?.book.status === 'BORROWED' ? (
-                        <Button disabled>Orded Not Available</Button>
+                        <Button disabled>Order is not Available</Button>
                       ) : (
                         <Button primary>Order Book</Button>
                       )}
