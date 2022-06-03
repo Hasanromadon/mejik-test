@@ -7,6 +7,27 @@ const SEARCH_BOOK = gql`
       author {
         name
       }
+      status
+      code
+      cover
+      category {
+        name
+      }
+      description
+      rack {
+        name
+      }
+    }
+  }
+`;
+const SEARCH_BOOK_BY_CATEGORY = gql`
+  query searchBook($name: String!) {
+    books(where: { category: { name_contains: $name } }) {
+      name
+      status
+      author {
+        name
+      }
       code
       cover
       category {
@@ -20,8 +41,9 @@ const SEARCH_BOOK = gql`
   }
 `;
 
-export const useSearchBook = (name) => {
-  const { loading, error, data } = useQuery(SEARCH_BOOK, {
+export const useSearchBook = ({ name, by }) => {
+  const FILTER_BY = by === 'title' ? SEARCH_BOOK : SEARCH_BOOK_BY_CATEGORY;
+  const { loading, error, data } = useQuery(FILTER_BY, {
     variables: {
       name,
     },

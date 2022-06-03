@@ -6,11 +6,18 @@ import { useSearchParams } from 'react-router-dom';
 import { useSearchBook } from '../hooks/userSearchBooks';
 import loadingIcon from '../assets/loadingIcon.gif';
 
-const Home = () => {
+const Search = () => {
   const [search] = useSearchParams();
-  const { loading, error, data } = useSearchBook(
-    search.get('key') ? search.get('key') : search.get('cat')
-  );
+  const filter = search.get('key')
+    ? {
+        name: search.get('key'),
+        by: 'title',
+      }
+    : {
+        name: search.get('cat'),
+        by: 'category',
+      };
+  const { loading, error, data } = useSearchBook(filter);
 
   return (
     <Layout>
@@ -18,7 +25,9 @@ const Home = () => {
         <Categories />
         {loading ? (
           <>
-            <img src={loadingIcon} alt="" />
+            <div className="text-center">
+              <img className="inline" src={loadingIcon} alt="" />
+            </div>
           </>
         ) : (
           <>
@@ -38,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Search;
