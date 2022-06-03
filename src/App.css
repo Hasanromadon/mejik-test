@@ -1,0 +1,16 @@
+body {
+    @apply font-rubik;
+}
+button {
+    @apply cursor-pointer ;
+}
+.btn_primary {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:bg-gradient-to-r hover:from-cyan-600 hover:to-blue-600
+}
+.btn_outline {
+    @apply border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white
+}
+
+.card-link {
+    @apply font-medium text-lg mb-3 before:absolute before:top-0 before:bottom-0 before:right-0 before:left-0;
+}

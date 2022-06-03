@@ -1,0 +1,16 @@
+mutation  {
+  createOrder(
+    input: {
+    dueDate: "21-08-2022"
+    dateStart: "18-08-2022"
+    userId : "62985d0aab6338003bf811ff"
+    bookId: "625593bf5a0eca003a7adf77"
+
+  }) {
+    status
+   book {
+    name
+  }
+    
+  }
+}
