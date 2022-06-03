@@ -7,21 +7,29 @@ import Button from './Button';
 import Modal from './Modal';
 import Login from './Login';
 import Register from './Register';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NavMenu from './NavMenu';
+import { logout } from '../features/userReducer';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
   let [isLoginOpen, setIsLoginOpen] = useState(false);
   let [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const { user, isLoggedIn } = useSelector((state) => state.user);
-  console.log(isLoggedIn);
+
+  const dispatch = useDispatch();
 
   const openLoginModal = () => {
     setIsLoginOpen(true);
   };
   const openRegisterModal = () => {
     setIsRegisterOpen(true);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success('You are logged out!');
   };
 
   return (
@@ -38,7 +46,10 @@ const Navbar = () => {
                 <Link className="mr-2 text-cyan-500" to="/profile">
                   Profile
                 </Link>{' '}
-                | <button className="ml-2">logout</button>
+                |{' '}
+                <button onClick={() => handleLogout()} className="ml-2">
+                  logout
+                </button>
               </div>
             ) : (
               <>
